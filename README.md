@@ -1,2 +1,3 @@
 # Note
-The note
+
+新的开始。

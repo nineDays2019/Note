@@ -17,9 +17,9 @@
 * 调整速度倍率范围 [0.25, 4]
 * 如果只调整视频的话，最好把音频禁掉
 * 对视频进行加速时，如果不想丢帧，可以用 -r 参数指定输出视频 PTS 
-	
+
 	`ffmpeg -i demo.mp4 -an -r 60 -filter:v "setpts=2*PTS" output.mp4`
-	
+
 ## 调整音频速率
 
 原理：**简单的方法是调整音频采样率，但是这种方法会改变音色，一般采用通过对原音进行重采样，差值等方法**。
@@ -34,11 +34,10 @@
 * 如果需要调整四倍可采用以下方法：
 
 	`ffmpeg -i demo.mp4 -filter:a "atempo=2.0,atempo=2.0" -vn output.mp4`
-	
+
 ## 同时调整
 
 `ffmpeg -i demo.mp4 -filter_complex "[0:v]setpts=0.5*PTS[v];[0:a]atempo=2.0[a]" -map "[v]" -map "[a]" output.mp4`
 
 ---
 END
-	
